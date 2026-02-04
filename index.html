@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S.T.A.S.I.S. Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#60a5fa;
+      --accent:#3b82f6;
+      --highlight:#93c5fd;
+      --text:#d1d5db;
+      --muted:#9ca3af;
+      --panel:#1f2937;
+      --panel2:#111827;
+      --border:#3b82f6;
+      --bg1:#000000;
+      --bg2:#1a1a1a;
+      --shadow: 0 0 20px rgba(96,165,250,.35);
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      padding:0;
+      font-family:'Teko', sans-serif;
+      background: linear-gradient(to bottom, var(--bg1), var(--bg2));
+      color:white;
+      text-align:center;
+    }
+    .container{
+      padding: 44px 20px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    header{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .logo-img{
+      width: min(320px, 80vw);
+      height:auto;
+      margin-top: 10px;
+      filter: drop-shadow(0 0 18px rgba(96,165,250,.25));
+    }
+    .site-name{
+      font-size: 3.25rem;
+      color: var(--primary);
+      margin: 0;
+      letter-spacing: .04em;
+      line-height: 1;
+    }
+    .site-tagline{
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: 1.35rem;
+      margin: 0;
+      letter-spacing: .08em;
+    }
+
+    nav{
+      margin: 22px 0 10px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap: 10px;
+    }
+    .button{
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--primary);
+      padding: 10px 18px;
+      cursor: pointer;
+      border-radius: 10px;
+      font-size: 1.15rem;
+      text-decoration:none;
+      display:inline-block;
+      transition: transform .15s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+      user-select:none;
+    }
+    .button:hover{
+      background: var(--accent);
+      color: white;
+      box-shadow: var(--shadow);
+      transform: translateY(-1px);
+    }
+    .button.secondary{
+      border-color: rgba(59,130,246,.55);
+      color: var(--highlight);
+    }
+
+    .hero{
+      margin: 28px auto 10px;
+      max-width: 900px;
+      padding: 26px 18px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(31,41,55,.55), rgba(17,24,39,.35));
+      border: 1px solid rgba(59,130,246,.55);
+      box-shadow: 0 0 18px rgba(96,165,250,.12);
+    }
+    .hero h1{
+      font-size: 3.3rem;
+      color: var(--primary);
+      margin: 0 0 6px;
+      line-height: 1.05;
+    }
+    .hero .subline{
+      font-size: 1.45rem;
+      color: var(--highlight);
+      margin: 0 0 10px;
+      letter-spacing: .03em;
+    }
+    .hero .focus{
+      font-size: 1.2rem;
+      color: var(--text);
+      margin: 0;
+      opacity: .95;
+    }
+
+    section{
+      text-align:left;
+      margin: 42px auto 0;
+      max-width: 980px;
+    }
+    .section-title{
+      text-align:center;
+      font-size: 2.4rem;
+      color: var(--primary);
+      margin: 0 0 12px;
+    }
+    .section-desc{
+      text-align:center;
+      color: var(--muted);
+      font-size: 1.2rem;
+      margin: 0 0 22px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+    .card{
+      background-color: rgba(31,41,55,.92);
+      border: 1px solid rgba(59,130,246,.7);
+      padding: 18px 18px 16px;
+      border-radius: 14px;
+      transition: box-shadow .25s ease, transform .15s ease;
+      box-shadow: 0 0 0 rgba(96,165,250,0);
+    }
+    .card:hover{
+      box-shadow: var(--shadow);
+      transform: translateY(-1px);
+    }
+    .card h3{
+      margin: 0 0 8px;
+      color: var(--highlight);
+      font-size: 1.55rem;
+      letter-spacing: .02em;
+    }
+    .card ul{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--text);
+      font-size: 1.05rem;
+      line-height: 1.25;
+    }
+    .card li{ margin: 6px 0; }
+    .card .card-actions{
+      margin-top: 14px;
+      text-align:center;
+    }
+
+    /* Layout spans */
+    .span-6{ grid-column: span 6; }
+    .span-12{ grid-column: span 12; }
+
+    .work-list{
+      display:flex;
+      flex-direction:column;
+      gap: 14px;
+    }
+    .work-item{
+      background: rgba(31,41,55,.8);
+      border: 1px solid rgba(59,130,246,.55);
+      border-radius: 14px;
+      padding: 16px 18px;
+      display:flex;
+      flex-direction:column;
+      gap: 6px;
+    }
+    .work-item .title{
+      font-size: 1.6rem;
+      color: var(--highlight);
+      margin: 0;
+    }
+    .work-item .meta{
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: 0;
+    }
+    .work-item .bullets{
+      margin: 6px 0 0;
+      padding-left: 18px;
+      color: var(--text);
+      font-size: 1.05rem;
+      line-height: 1.25;
+    }
+    .callout{
+      background: linear-gradient(180deg, rgba(31,41,55,.55), rgba(17,24,39,.25));
+      border: 1px solid rgba(59,130,246,.55);
+      border-radius: 14px;
+      padding: 18px 18px;
+      color: var(--text);
+      box-shadow: 0 0 18px rgba(96,165,250,.10);
+    }
+    .callout strong{ color: var(--highlight); }
+
+    .section-actions{
+      text-align:center;
+      margin-top: 18px;
+    }
+
+    footer{
+      margin-top: 70px;
+      padding: 40px 20px;
+      background-color: #111;
+      color: var(--muted);
+      font-size: 1rem;
+      text-align: center;
+      border-top: 1px solid #3f3f46;
+    }
+    .footer-logo{
+      max-width: 150px;
+      margin: 0 auto 10px;
+      filter: drop-shadow(0 0 12px rgba(96,165,250,.12));
+    }
+    .social-icons{
+      margin: 18px 0 10px;
+    }
+    .social-icons a{
+      margin: 0 10px;
+      display:inline-block;
+      width: 30px;
+      height: 30px;
+      filter: invert(59%) sepia(18%) saturate(1632%) hue-rotate(179deg) brightness(92%) contrast(86%);
+    }
+    .social-icons img{ width:100%; height:auto; }
+    .contact-info{
+      margin-top: 6px;
+      color: var(--muted);
+    }
+    .contact-info a{
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .contact-info a:hover{ text-decoration: underline; }
+    .footer-note{
+      font-size: .9rem;
+      color: #6b7280;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 860px){
+      .span-6{ grid-column: span 12; }
+      .hero h1{ font-size: 2.7rem; }
+      .site-name{ font-size: 2.8rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <img src="logo.png" alt="S.T.A.S.I.S. Logo" class="logo-img">
+      <h1 class="site-name">S.T.A.S.I.S.</h1>
+      <p class="site-tagline">Esports • Production • Systems</p>
+    </header>
+
+    <nav>
+      <a href="index.html" class="button">Home</a>
+      <a href="archives.html" class="button">Archives</a>
+      <a href="selected-work.html" class="button">Selected Work</a>
+      <a href="regional-expansion.html" class="button">Regional Expansion</a>
+      <a href="contact.html" class="button">Contact</a>
+    </nav>
+
+    <div class="hero" id="top">
+      <h1>Esports Infrastructure &amp; Production</h1>
+      <p class="subline">Tournament Operations · Broadcast Systems · Technical Readiness</p>
+      <p class="focus">Focused on building scalable competitive environments and supporting professional league expansion beyond traditional coastal hubs.</p>
+      <div class="section-actions">
+        <a class="button" href="#what-i-build">What I Build</a>
+        <a class="button secondary" href="archives.html">View Archives</a>
+      </div>
+    </div>
+
+    <!-- WHAT I BUILD -->
+    <section id="what-i-build">
+      <h2 class="section-title">What I Build</h2>
+      <p class="section-desc">Esports-first systems. Digital media as infrastructure.</p>
+
+      <div class="grid">
+        <div class="card span-6" id="ops">
+          <h3>Esports Operations</h3>
+          <ul>
+            <li>Tournament organization and competitive scheduling</li>
+            <li>Multi-title team and roster management</li>
+            <li>Scrim coordination and event logistics</li>
+            <li>Collegiate recruitment and program growth</li>
+          </ul>
+          <div class="card-actions">
+            <a class="button secondary" href="#selected-work">See Operations Examples</a>
+          </div>
+        </div>
+
+        <div class="card span-6" id="broadcast">
+          <h3>Broadcast &amp; Production Systems</h3>
+          <ul>
+            <li>OBS-based live broadcast pipelines</li>
+            <li>Live switching, overlays, and audio mixing</li>
+            <li>Commentary workflows and show flow design</li>
+            <li>Highlight and post-production pipelines</li>
+          </ul>
+          <div class="card-actions">
+            <a class="button secondary" href="#selected-work">See Broadcast Examples</a>
+          </div>
+        </div>
+
+        <div class="card span-6" id="infra">
+          <h3>Technical Infrastructure</h3>
+          <ul>
+            <li>PC setup and system optimization</li>
+            <li>Network reliability and troubleshooting</li>
+            <li>Lab and event hardware readiness</li>
+            <li>Tournament-ready production environments</li>
+          </ul>
+          <div class="card-actions">
+            <a class="button secondary" href="#selected-work">See Infrastructure Examples</a>
+          </div>
+        </div>
+
+        <div class="card span-6" id="program">
+          <h3>Program Development</h3>
+          <ul>
+            <li>Founding and scaling esports programs</li>
+            <li>Training production crews and team staff</li>
+            <li>Operational standards and workflows</li>
+            <li>Long-term sustainability planning</li>
+          </ul>
+          <div class="card-actions">
+            <a class="button secondary" href="#selected-work">See Program Examples</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELECTED WORK -->
+    <section id="selected-work">
+      <h2 class="section-title">Selected Work</h2>
+      <p class="section-desc">Quick proof. More detail lives in the Archives.</p>
+
+      <div class="work-list">
+        <div class="work-item">
+          <p class="title">Collegiate Recruitment Tournament — MCC Esports</p>
+          <p class="meta">Role: Tournament Organizer &amp; Broadcast Lead · Scale: 64-player, multi-pod event</p>
+          <ul class="bullets">
+            <li>Competitive operations, broadcast execution, scholarship distribution</li>
+            <li>Production flow, caster coordination, show structure</li>
+          </ul>
+        </div>
+
+        <div class="work-item">
+          <p class="title">High School Esports Program — Clarke Community</p>
+          <p class="meta">Role: Founder &amp; Team Captain · Scale: 10 competitive seasons · Multi-title program</p>
+          <ul class="bullets">
+            <li>Program creation, team leadership, competitive scheduling</li>
+            <li>Broadcast visibility and recruitment support (OBS)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-actions">
+        <a class="button" href="archives.html">View All Work in Archives</a>
+      </div>
+    </section>
+
+    <!-- REGIONAL EXPANSION -->
+    <section id="regional-expansion">
+      <h2 class="section-title">Regional Expansion (In Development)</h2>
+      <p class="section-desc">Infrastructure-first league growth beyond traditional coastal hubs.</p>
+
+      <div class="callout">
+        <p style="margin:0; font-size:1.15rem; line-height:1.35;">
+          Professional esports is heavily concentrated in coastal regions, while competitive growth in the <strong>Midwest</strong> continues to accelerate.
+          My long-term focus is building competitive, broadcast, and technical systems that support league expansion outside traditional hubs—<strong>beginning with the Midwest and extending into Central America</strong>.
+          This work is currently in research and planning while I continue building experience in collegiate operations and production leadership.
+        </p>
+      </div>
+
+      <div class="section-actions">
+        <a class="button secondary" href="#top">Back to Top</a>
+        <a class="button" href="contact.html">Contact</a>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <img src="logo.png" alt="S.T.A.S.I.S. Logo" class="footer-logo">
+    <div class="social-icons">
+      <a href="https://www.tiktok.com/@stasiscreations"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok"></a>
+      <a href="https://www.instagram.com/s.t.a.s.i.s.creations/"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"></a>
+      <a href="https://x.com/STASISCreations"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X"></a>
+      <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube"></a>
+    </div>
+    <div class="contact-info">
+      <p>Email: <a href="mailto:2024mmorgan@gmail.com">2024mmorgan@gmail.com</a></p>
+      <p>Phone: <a href="tel:+16414810176">(641) 481-0176</a></p>
+    </div>
+    <p class="footer-note">© 2025</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selected Work | Montana Morgan</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary:#60a5fa;
+      --accent:#3b82f6;
+      --highlight:#93c5fd;
+      --text:#d1d5db;
+      --muted:#9ca3af;
+      --panel:#1f2937;
+      --panel2:#111827;
+      --border:#3b82f6;
+    }
+
+    body{
+      margin:0;
+      font-family:'Teko', sans-serif;
+      background: linear-gradient(to bottom, #000000, #1a1a1a);
+      color: var(--text);
+      text-align:center;
+    }
+
+	:root{
+  	--primary:#60a5fa;
+  	--muted:#9ca3af;
+	}
+    .container{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    header{
+      margin-bottom: 30px;
+    }
+
+    h1{
+      font-size: 4rem;
+      color: var(--primary);
+      margin: 0 0 10px;
+      letter-spacing: .5px;
+    }
+
+    .subhead{
+      font-size: 1.6rem;
+      color: var(--muted);
+      margin: 0 0 22px;
+    }
+
+    nav{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin: 22px 0 10px;
+    }
+
+    .btn{
+      display:inline-block;
+      border: 1px solid var(--border);
+      color: var(--primary);
+      padding: 10px 18px;
+      border-radius: 10px;
+      text-decoration:none;
+      font-size: 1.25rem;
+      transition: background .2s ease, box-shadow .2s ease, color .2s ease;
+      background: transparent;
+    }
+
+    .btn:hover{
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 0 16px rgba(96,165,250,.35);
+    }
+
+    .panel{
+      background: rgba(17,24,39,.35);
+      border: 1px solid rgba(59,130,246,.55);
+      border-radius: 14px;
+      padding: 18px;
+      text-align:left;
+    }
+
+    .controls{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      margin: 28px 0 10px;
+    }
+
+    .searchRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      width:100%;
+    }
+
+    input, select{
+      background: #0f172a;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 1.15rem;
+      outline: none;
+      flex: 1;
+      min-width: 220px;
+    }
+
+    input:focus, select:focus{
+      box-shadow: 0 0 10px rgba(96,165,250,.35);
+      border-color: var(--primary);
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top: 12px;
+    }
+
+    .tag{
+      border: 1px solid var(--border);
+      color: var(--primary);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 1.05rem;
+      cursor:pointer;
+      user-select:none;
+      transition: background .2s ease, color .2s ease;
+      background: transparent;
+    }
+    .tag.active{
+      background: var(--accent);
+      color: white;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .card{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 20px;
+      text-align:left;
+      transition: transform .18s ease, box-shadow .18s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 0 18px rgba(96,165,250,.35);
+    }
+
+    .kicker{
+      color: var(--highlight);
+      font-size: 1.1rem;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .titleRow{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom: 10px;
+    }
+
+    .card h2{
+      color: var(--primary);
+      font-size: 1.9rem;
+      margin: 0;
+      line-height: 1.05;
+    }
+
+    .year{
+      color: var(--muted);
+      font-size: 1.2rem;
+      white-space:nowrap;
+      margin-top: 3px;
+    }
+
+    .spec{
+      list-style:none;
+      padding:0;
+      margin: 10px 0 0;
+    }
+    .spec li{
+      margin: 8px 0;
+      font-size: 1.18rem;
+      color: var(--text);
+    }
+    .spec b{
+      color: var(--highlight);
+      font-weight: 600;
+    }
+
+    .cardFooter{
+      margin-top: 14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .chip{
+      font-size: 1.0rem;
+      color: var(--muted);
+      border: 1px solid rgba(148,163,184,.35);
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,.35);
+    }
+
+    .link{
+      margin-left:auto;
+      color: var(--primary);
+      text-decoration:none;
+      font-size: 1.15rem;
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 10px;
+      transition: background .2s ease, color .2s ease, box-shadow .2s ease;
+    }
+    .link:hover{
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 0 14px rgba(96,165,250,.35);
+    }
+
+    .metaNote{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 1.15rem;
+      text-align:left;
+    }
+
+    footer{
+      margin-top: 70px;
+      padding: 40px 20px;
+      background-color: #111;
+      color: var(--muted);
+      font-size: 1rem;
+      text-align: center;
+      border-top: 1px solid #3f3f46;
+    }
+    .footer-logo{
+      max-width: 150px;
+      margin: 0 auto 10px;
+      filter: drop-shadow(0 0 12px rgba(96,165,250,.12));
+    }
+    .social-icons{
+      margin: 18px 0 10px;
+    }
+    .social-icons a{
+      margin: 0 10px;
+      display:inline-block;
+      width: 30px;
+      height: 30px;
+      filter: invert(59%) sepia(18%) saturate(1632%) hue-rotate(179deg) brightness(92%) contrast(86%);
+    }
+    .social-icons img{ width:100%; height:auto; }
+    .contact-info{
+      margin-top: 6px;
+      color: var(--muted);
+    }
+    .contact-info a{
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .contact-info a:hover{ text-decoration: underline; }
+    .footer-note{
+      font-size: .8rem;
+      color: #6b7280;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 860px){
+      .span-6{ grid-column: span 12; }
+      .hero h1{ font-size: 2.7rem; }
+      .site-name{ font-size: 2.8rem; }
+    }
+
+    .mutedLink{
+      color: var(--primary);
+      text-decoration:none;
+    }
+    .mutedLink:hover{ text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Selected Work</h1>
+      <p class="subhead">Proof-of-work highlights across competition, broadcast, and technical systems.</p>
+
+      <nav>
+        <a class="btn" href="index.html">Home</a>
+        <a class="btn" href="archives.html">Archives</a>
+        <a class="btn" href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <section class="panel" aria-label="Filters">
+      <div class="searchRow">
+        <input id="searchInput" type="text" placeholder="Search: tournament, broadcast, lab, program..." />
+        <select id="sortSelect">
+          <option value="newest">Sort: Newest</option>
+          <option value="oldest">Sort: Oldest</option>
+          <option value="title">Sort: Title</option>
+        </select>
+      </div>
+
+      <div class="tags" id="tagBar" aria-label="Tag filters">
+        <div class="tag" data-tag="ops">Ops</div>
+        <div class="tag" data-tag="broadcast">Broadcast</div>
+        <div class="tag" data-tag="tech">Tech</div>
+        <div class="tag" data-tag="program">Program</div>
+        <div class="tag" data-tag="event">Event</div>
+        <div class="tag" data-tag="media">Media</div>
+      </div>
+
+      <div class="controls">
+        <a class="btn" href="#" id="clearBtn">Clear Filters</a>
+        <div class="metaNote" id="countNote">Showing 0 items</div>
+      </div>
+    </section>
+
+    <section class="grid" id="workGrid" aria-label="Selected work cards"></section>
+
+    <p class="metaNote">
+      Want the full list? Use <a class="mutedLink" href="archives.html">Archives</a> for everything.
+    </p>
+  </div>
+
+  <footer>
+    <img src="logo.png" alt="S.T.A.S.I.S. Logo" class="footer-logo">
+    <div class="social-icons">
+      <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok"></a>
+      <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"></a>
+      <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X"></a>
+      <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube"></a>
+    </div>
+    <div class="contact-info">
+      <p>Email: <a href="mailto:2024mmorgan@gmail.com">2024mmorgan@gmail.com</a></p>
+      <p>Phone: <a href="tel:+16414810176">(641) 481-0176</a></p>
+    </div>
+    <p class="footer-note">© 2025</p>
+  </footer>
+
+  <script>
+    // Selected work data (spec-style). Replace/expand as you add case studies.
+    const WORK = [
+      {
+        title: "Collegiate Recruitment Tournament — MCC Esports",
+        year: 2025,
+        kicker: "Tournament • Live Broadcast",
+        tags: ["ops","broadcast","event"],
+        role: "Tournament Organizer & Broadcast Lead",
+        scale: "64-player · multi-pod structure",
+        systems: "Competitive scheduling · production flow · caster coordination · scholarship distribution",
+        tools: "OBS Studio · Adobe Creative Suite",
+        link: "archives.html?search=MCC%20Esports"
+      },
+      {
+        title: "High School Esports Program — Clarke Community",
+        year: 2024,
+        kicker: "Program • Team Ops",
+        tags: ["program","ops","broadcast"],
+        role: "Founder & Team Captain",
+        scale: "10 competitive seasons · multi-title",
+        systems: "Recruitment · roster management · practice/competition scheduling · admin approval · equipment funding",
+        tools: "OBS Studio",
+        link: "archives.html?search=Clarke"
+      },
+      {
+        title: "MCC Student Productions — Live Broadcast Operations",
+        year: 2026,
+        kicker: "Broadcast Systems • Training",
+        tags: ["broadcast","tech","event"],
+        role: "Student Manager (Work-Study)",
+        scale: "Esports & athletics broadcasts · 10+ students trained",
+        systems: "Live switching · overlays · audio mixing · troubleshooting · show flow standards",
+        tools: "OBS Studio · Premiere Pro · Photoshop · Audition",
+        link: "archives.html?tags=broadcast,tech"
+      },
+      {
+        title: "IVCCD Labs — Tournament-Ready Systems Support",
+        year: 2025,
+        kicker: "Technical Infrastructure",
+        tags: ["tech","event"],
+        role: "Lab Supervisor (Work-Study)",
+        scale: "Esports & media labs",
+        systems: "PC setup/optimization · network reliability · IT troubleshooting · tournament-ready configuration",
+        tools: "Hardware · IT support",
+        link: "archives.html?tags=tech"
+      },
+      {
+        title: "MCC Red Carpet Event — Production Support",
+        year: 2025,
+        kicker: "Event • Production",
+        tags: ["event","media"],
+        role: "Event Producer",
+        scale: "Campus event production",
+        systems: "Event logistics · production coordination · run-of-show support",
+        tools: "Production workflows",
+        link: "archives.html?tags=event"
+      }
+    ];
+
+    const grid = document.getElementById("workGrid");
+    const searchInput = document.getElementById("searchInput");
+    const sortSelect = document.getElementById("sortSelect");
+    const tagEls = Array.from(document.querySelectorAll(".tag"));
+    const clearBtn = document.getElementById("clearBtn");
+    const countNote = document.getElementById("countNote");
+
+    let activeTags = [];
+
+    function renderCards(items){
+      grid.innerHTML = "";
+      items.forEach(item => {
+        const card = document.createElement("article");
+        card.className = "card";
+        card.dataset.tags = item.tags.join(" ");
+        card.dataset.year = String(item.year);
+
+        card.innerHTML = `
+          <div class="kicker">${item.kicker}</div>
+          <div class="titleRow">
+            <h2>${item.title}</h2>
+            <div class="year">${item.year}</div>
+          </div>
+          <ul class="spec">
+            <li><b>Role:</b> ${item.role}</li>
+            <li><b>Scale:</b> ${item.scale}</li>
+            <li><b>Systems:</b> ${item.systems}</li>
+            <li><b>Tools:</b> ${item.tools}</li>
+          </ul>
+          <div class="cardFooter">
+            ${item.tags.map(t => `<span class="chip">${t.toUpperCase()}</span>`).join("")}
+            <a class="link" href="${item.link}">View Context →</a>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      countNote.textContent = `Showing ${items.length} item${items.length === 1 ? "" : "s"}`;
+    }
+
+    function applyFilters(){
+      const q = (searchInput.value || "").toLowerCase().trim();
+
+      let items = WORK.filter(item => {
+        const hay = (item.title + " " + item.kicker + " " + item.role + " " + item.scale + " " + item.systems + " " + item.tools).toLowerCase();
+        const matchesSearch = !q || hay.includes(q);
+        const matchesTags = activeTags.length === 0 || activeTags.every(t => item.tags.includes(t));
+        return matchesSearch && matchesTags;
+      });
+
+      const sort = sortSelect.value;
+      items.sort((a,b) => {
+        if(sort === "title") return a.title.localeCompare(b.title);
+        if(sort === "oldest") return a.year - b.year;
+        return b.year - a.year; // newest
+      });
+
+      renderCards(items);
+      updateURL();
+    }
+
+    function updateURL(){
+      const params = new URLSearchParams();
+      if (searchInput.value) params.set("search", searchInput.value);
+      if (activeTags.length) params.set("tags", activeTags.join(","));
+      if (sortSelect.value && sortSelect.value !== "newest") params.set("sort", sortSelect.value);
+      history.replaceState(null, "", `?${params.toString()}`);
+    }
+
+    function applyURL(){
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get("search") || "";
+      const tags = params.get("tags") ? params.get("tags").split(",").map(s=>s.trim()).filter(Boolean) : [];
+      const sort = params.get("sort") || "newest";
+
+      searchInput.value = q;
+      sortSelect.value = sort;
+
+      activeTags = tags;
+      tagEls.forEach(el => {
+        const t = el.dataset.tag;
+        el.classList.toggle("active", activeTags.includes(t));
+      });
+    }
+
+    tagEls.forEach(el => {
+      el.addEventListener("click", () => {
+        const t = el.dataset.tag;
+        if(activeTags.includes(t)){
+          activeTags = activeTags.filter(x => x !== t);
+          el.classList.remove("active");
+        } else {
+          activeTags.push(t);
+          el.classList.add("active");
+        }
+        applyFilters();
+      });
+    });
+
+    searchInput.addEventListener("input", applyFilters);
+    sortSelect.addEventListener("change", applyFilters);
+
+    clearBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      searchInput.value = "";
+      sortSelect.value = "newest";
+      activeTags = [];
+      tagEls.forEach(el => el.classList.remove("active"));
+      applyFilters();
+    });
+
+    applyURL();
+    applyFilters();
+  </script>
+</body>
+</html>

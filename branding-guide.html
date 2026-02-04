@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Branding Guide - S.T.A.S.I.S.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Teko', sans-serif;
+      margin: 0;
+      background: linear-gradient(to bottom, #000000, #1a1a1a);
+      color: #d1d5db;
+      text-align: center;
+      display: none;
+    }
+    .container {
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #60a5fa;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    h2 {
+      color: #93c5fd;
+      font-size: 2rem;
+      margin-top: 2rem;
+    }
+    p, li {
+      font-size: 1.25rem;
+      color: #d1d5db;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    .logo-preview {
+      margin-top: 1rem;
+    }
+    .logo-preview img {
+      max-width: 300px;
+      width: 100%;
+      border: 2px solid #3b82f6;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #60a5fa;
+    }
+    .font-samples, .font-preview {
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: #1f2937;
+      border: 1px solid #3b82f6;
+      border-radius: 12px;
+    }
+    .font-samples h3, .font-preview h3 {
+      color: #60a5fa;
+      font-size: 1.75rem;
+    }
+    .font-samples p {
+      font-size: 2rem;
+      margin: 0.5rem 0;
+    }
+    .weight-300 { font-weight: 300; }
+    .weight-400 { font-weight: 400; }
+    .weight-500 { font-weight: 500; }
+    .weight-600 { font-weight: 600; }
+    .weight-700 { font-weight: 700; }
+    input[type="text"] {
+      margin-top: 1rem;
+      padding: 10px;
+      font-size: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #3b82f6;
+      background-color: #0f172a;
+      color: #d1d5db;
+      width: 80%;
+    }
+    .preview-output {
+      margin-top: 20px;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #60a5fa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>S.T.A.S.I.S. Branding Guide</h1>
+    <h2>Color Palette</h2>
+    <ul>
+      <li>Primary Blue: #60a5fa</li>
+      <li>Accent Blue: #3b82f6</li>
+      <li>Highlight: #93c5fd</li>
+      <li>Background Gradient: #000000 → #1a1a1a</li>
+      <li>Gray Contrast: #9ca3af / #d1d5db</li>
+    </ul>
+
+    <h2>Typography</h2>
+    <p>Font: <strong>Teko</strong> from Google Fonts</p>
+    <p>Style: Bold, techy, all caps preferred</p>
+
+    <div class="font-samples">
+      <h3>Font Weight Samples</h3>
+      <p class="weight-300">S.T.A.S.I.S. – Weight 300</p>
+      <p class="weight-400">S.T.A.S.I.S. – Weight 400</p>
+      <p class="weight-500">S.T.A.S.I.S. – Weight 500</p>
+      <p class="weight-600">S.T.A.S.I.S. – Weight 600</p>
+      <p class="weight-700">S.T.A.S.I.S. – Weight 700</p>
+    </div>
+
+    <div class="font-preview">
+      <h3>Live Font Preview</h3>
+      <input type="text" id="fontInput" placeholder="Type here to preview Teko...">
+      <div class="preview-output" id="previewOutput">Your preview will appear here</div>
+    </div>
+
+    <h2>Logo</h2>
+    <p>Use the holographic-style glowing AI brain logo with S.T.A.S.I.S. wrapping around it.</p>
+    <div class="logo-preview">
+      <img src="logo.png" alt="S.T.A.S.I.S. Logo Preview" />
+    </div>
+
+    <h2>Voice & Tone</h2>
+    <p>Professional, anonymous, intelligent, confident, and futuristic.</p>
+  </div>
+
+  <script>
+    const password = prompt("Enter branding password:");
+    const correctPassword = "stasis2025";
+
+    if (password === correctPassword) {
+      document.body.style.display = "block";
+    } else {
+      document.body.innerHTML = "<h1 style='color: red; margin-top: 100px;'>Access Denied.</h1>";
+    }
+
+    const input = document.getElementById("fontInput");
+    const output = document.getElementById("previewOutput");
+    input.addEventListener("input", () => {
+      output.textContent = input.value || "Your preview will appear here";
+    });
+  </script>
+</body>
+</html>
